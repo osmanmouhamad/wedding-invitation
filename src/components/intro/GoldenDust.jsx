@@ -16,7 +16,7 @@ function GoldenDust({ isOpening }) {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-5 overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-5 overflow-hidden motion-reduce:hidden"
     >
       {particles.map((particle, index) => (
         <motion.span

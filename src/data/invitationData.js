@@ -4,9 +4,7 @@ export const invitationData = {
     bride: "بشرى الكنج",
   },
 event: {
-  date: "17 / 7 / 2026",
-  time: "7:00 مساءً",
-  countdownDate: "2026-07-17T19:00:00+03:00",
+  startsAt: "2026-07-17T19:00:00+03:00",
 },
 
   venue: {

@@ -2,19 +2,25 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 @theme {
-  --color-background: #eee7d9;
-  --color-surface: #fbf7ef;
-
-  --color-text: #4d513d;
-  --color-text-dark: #3f4434;
-
-  --color-primary: #747957;
-  --color-secondary: #c9bea0;
-
-  --color-overlay: rgb(74 78 58 / 22%);
-
-  --font-english: "Cormorant Garamond", serif;
+  --font-arabic: "Amiri", serif;
   --font-arabic-display: "Aref Ruqaa", serif;
+  --font-english: "Cormorant Garamond", serif;
+
+  --color-background: #f4efe5;
+  --color-surface: #fbf8f2;
+  --color-ink: #273022;
+  --color-olive: #4d573d;
+  --color-gold: #b69758;
+  --color-muted-gold: #d6c39a;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-arabic);
+  background: var(--color-background);
+  color: var(--color-ink);
+  line-height: 1.8;
 }
 *,
 *::before,
@@ -26,12 +32,5 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: var(--font-arabic);
-  background: var(--color-background);
-  color: var(--color-text);
-  line-height: 1.5;
-}
+
 
