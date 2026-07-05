@@ -1,15 +1,6 @@
 import { motion } from "framer-motion";
 import { invitationData } from "../data/invitationData";
-
-function Divider() {
-  return (
-    <div className="flex items-center justify-center gap-3">
-      <span className="h-px w-14 bg-surface/35 sm:w-24" />
-      <span className="size-2 rotate-45 border border-surface/70" />
-      <span className="h-px w-14 bg-surface/35 sm:w-24" />
-    </div>
-  );
-}
+import OrnamentDivider from "../components/ui/OrnamentDivider";
 
 function Footer() {
   const { couple, event, footer } = invitationData;
@@ -55,7 +46,7 @@ function Footer() {
           transition={{ delay: 0.15, duration: 0.65, ease: "easeOut" }}
           className="mt-6 origin-center"
         >
-          <Divider />
+          <OrnamentDivider tone="ivory" />
         </motion.div>
 
         <motion.h2

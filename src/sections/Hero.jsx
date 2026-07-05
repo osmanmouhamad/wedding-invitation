@@ -1,16 +1,8 @@
 import { motion } from "framer-motion";
 import { invitationData } from "../data/invitationData";
-import introBg from "../assets/intro-bg.webp";
+import introBg from "../assets/intro-bg-optimized.webp";
+import OrnamentDivider from "../components/ui/OrnamentDivider";
 
-function Divider() {
-  return (
-    <div className="flex items-center justify-center gap-3 text-primary">
-      <span className="h-px w-14 bg-primary/45 sm:w-24" />
-      <span className="size-2 rotate-45 border border-primary/70" />
-      <span className="h-px w-14 bg-primary/45 sm:w-24" />
-    </div>
-  );
-}
 
 function Hero() {
   const { couple, event, venue, hero } = invitationData;
@@ -69,7 +61,7 @@ function Hero() {
           transition={{ delay: 0.18, duration: 0.65, ease: "easeOut" }}
           className="mt-6"
         >
-          <Divider />
+          <OrnamentDivider />
         </motion.div>
 
         {/* Invitation line */}
@@ -118,7 +110,7 @@ function Hero() {
           transition={{ delay: 0.92, duration: 0.65, ease: "easeOut" }}
           className="mt-10"
         >
-          <Divider />
+          <OrnamentDivider />
         </motion.div>
 
         {/* Date only — details move to WeddingDetails */}

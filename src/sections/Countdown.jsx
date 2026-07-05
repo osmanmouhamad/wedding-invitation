@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { invitationData } from "../data/invitationData";
+import OrnamentDivider from "../components/ui/OrnamentDivider";
 
 function getRemainingTime(targetDate) {
   const targetTime = new Date(targetDate).getTime();
@@ -40,18 +41,6 @@ function TimeUnit({ value, label }) {
   );
 }
 
-function SmallOrnament() {
-  return (
-    <div
-      aria-hidden="true"
-      className="flex items-center justify-center gap-3 text-primary"
-    >
-      <span className="h-px w-12 bg-primary/40 sm:w-20" />
-      <span className="size-2 rotate-45 border border-primary/70" />
-      <span className="h-px w-12 bg-primary/40 sm:w-20" />
-    </div>
-  );
-}
 
 function Countdown() {
   const { event } = invitationData;
@@ -124,7 +113,7 @@ function Countdown() {
           transition={{ delay: 0.28, duration: 0.65, ease: "easeOut" }}
           className="mt-8 origin-center"
         >
-          <SmallOrnament />
+          <OrnamentDivider size="small" />
         </motion.div>
 
         {timeLeft.isFinished ? (
@@ -172,7 +161,7 @@ function Countdown() {
           transition={{ delay: 0.5, duration: 0.65, ease: "easeOut" }}
           className="mt-10 origin-center"
         >
-          <SmallOrnament />
+          <OrnamentDivider size="small" />
         </motion.div>
 
         <motion.p
