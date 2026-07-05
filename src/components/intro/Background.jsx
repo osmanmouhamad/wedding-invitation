@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import introBg from "../../assets/intro-bg.webp";
+import introBg from "../../assets/intro-bg-optimized.webp";
 
 function Background({ isOpening }) {
   return (

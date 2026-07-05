@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import birdWhite from "../../assets/bird-white.webp";
-
+import birdWhite from "../../assets/bird-white-optimized.webp";
 function Birds({ isOpening }) {
   const [birdsReady, setBirdsReady] = useState(false);
 
