@@ -19,7 +19,7 @@ function CalendarIcon() {
     >
       <rect x="3.5" y="5.5" width="17" height="15" rx="2" />
       <path d="M7.5 3.5v4M16.5 3.5v4M3.5 10h17" />
-      <path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01" />
+      <path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01" />
     </svg>
   );
 }
@@ -75,6 +75,53 @@ function DetailCard({ icon, label, children, delay }) {
 
       <div className="mt-3 text-text-dark">{children}</div>
     </motion.article>
+  );
+}
+
+function LocationCard({ venue, label, delay }) {
+  return (
+    <motion.a
+      href={venue.mapUrl}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={`افتح موقع ${venue.name} على الخريطة`}
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.35 }}
+      transition={{ delay, duration: 0.7, ease: "easeOut" }}
+      whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.98 }}
+      className="group flex min-h-56 flex-col items-center justify-center px-5 py-9 text-center transition-colors hover:bg-background/65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
+    >
+      <span className="flex size-14 items-center justify-center rounded-full border border-primary/45 bg-primary text-surface shadow-[0_12px_30px_rgba(38,48,31,0.18)]">
+        <PinIcon />
+      </span>
+
+      <p className="mt-5 font-arabic text-lg font-bold text-text-dark/85">
+        {label}
+      </p>
+
+      <p
+        dir="ltr"
+        className="mt-3 font-english text-2xl font-semibold tracking-wide text-primary"
+      >
+        {venue.name}
+      </p>
+
+      <p className="mt-2 font-arabic text-lg font-semibold text-text-dark/80">
+        {venue.address}
+      </p>
+
+      <span className="mt-4 inline-flex items-center gap-2 font-arabic text-sm font-bold text-primary">
+        افتح الموقع على الخريطة
+        <span
+          aria-hidden="true"
+          className="transition-transform duration-300 group-hover:-translate-x-1"
+        >
+          ←
+        </span>
+      </span>
+    </motion.a>
   );
 }
 
@@ -154,19 +201,11 @@ function WeddingDetails() {
             </DetailCard>
           </div>
 
-          <DetailCard
-            icon={<PinIcon />}
+          <LocationCard
+            venue={venue}
             label={details.venueLabel}
             delay={0.3}
-          >
-            <p className="font-english text-2xl font-semibold tracking-wide text-primary">
-              {venue.name}
-            </p>
-
-            <p className="mt-2 font-arabic text-lg font-semibold text-text-dark/80">
-              {venue.address}
-            </p>
-          </DetailCard>
+          />
         </div>
 
         <motion.p

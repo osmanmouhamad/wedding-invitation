@@ -1,23 +1,25 @@
 import { useState } from "react";
+
 import IntroScreen from "./sections/IntroScreen";
 import Hero from "./sections/Hero";
 import WeddingDetails from "./sections/WeddingDetails";
 import Countdown from "./sections/Countdown";
-import LocationMap from "./sections/LocationMap";
 import Footer from "./sections/Footer";
+
 function App() {
   const [isOpened, setIsOpened] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
 
-function handleOpen() {
-  if (isOpening) return;
+  function handleOpen() {
+    if (isOpening) return;
 
-  setIsOpening(true);
+    setIsOpening(true);
 
-  setTimeout(() => {
-    setIsOpened(true);
-  }, 2700);
-}
+    window.setTimeout(() => {
+      setIsOpened(true);
+    }, 2700);
+  }
+
   return (
     <>
       {!isOpened ? (
@@ -27,7 +29,6 @@ function handleOpen() {
           <Hero />
           <WeddingDetails />
           <Countdown />
-          <LocationMap />
           <Footer />
         </main>
       )}
