@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 
+import ShareInvitationButton from "../components/ui/ShareInvitationButton";
 import { invitationData } from "../data/invitationData";
 import {
   formatInvitationDate,
@@ -76,7 +77,7 @@ function DetailCard({ icon, label, children, delay }) {
 }
 
 function WeddingDetails() {
-  const { event, venue, details } = invitationData;
+  const { couple, event, venue, details, sharing } = invitationData;
 
   const eventDate = formatInvitationDate(
     event.startsAt,
@@ -134,7 +135,7 @@ function WeddingDetails() {
             label={details.dateLabel}
             delay={0.1}
           >
-            <p className="font-english text-2xl tracking-[0.1em] text-primary">
+            <p className="font-arabic text-2xl text-primary">
               {eventDate}
             </p>
           </DetailCard>
@@ -175,6 +176,15 @@ function WeddingDetails() {
         >
           {details.closingText}
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ delay: 0.42, duration: 0.7, ease: "easeOut" }}
+        >
+          <ShareInvitationButton couple={couple} sharing={sharing} />
+        </motion.div>
       </div>
     </section>
   );

@@ -18,23 +18,40 @@ export const invitationData = {
 
   hero: {
     basmala: "بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ",
-    invitationText: "بكل الحب والفرح، يسعدنا دعوتكم لمشاركتنا أجمل لحظات العمر.",
+    eyebrow: "بكل الحب والفرح",
+    invitationText: "يسرّنا دعوتكم لحضور حفل زفاف",
+    dateLabel: "يوم فرحنا",
+    scrollLabel: "اكتشف تفاصيل دعوتنا",
   },
 
   details: {
-    title: "فرحتنا تكتمل بحضوركم",
+    eyebrow: "Wedding Details",
+    title: "تفاصيل فرحتنا",
+    description:
+      "يشرفنا حضوركم ومشاركتنا هذه اللحظة التي ستبقى ذكرى جميلة في قلوبنا.",
     dateLabel: "التاريخ",
-    timeLabel: "الساعة",
+    timeLabel: "الوقت",
     venueLabel: "المكان",
+    closingText: "وجودكم يضيف إلى فرحتنا معنى أجمل.",
   },
 
   countdown: {
+    eyebrow: "Countdown",
     title: "نترقب فرحتنا بشوق",
     finishedMessage: "بدأت فرحتنا ✦",
     supportingText: "حضوركم هو أجمل ما يكتمل به هذا اليوم.",
   },
 
+  sharing: {
+    label: "مشاركة الدعوة",
+    copiedLabel: "تم نسخ رابط الدعوة",
+    errorLabel: "تعذر نسخ الرابط، حاول مرة أخرى",
+    shareText: "يسرّنا دعوتكم لمشاركتنا فرحة زفافنا.",
+  },
+
   footer: {
+    welcomeMessage: "شرفتمونا بحضوركم",
     message: "وجودكم يملأ فرحتنا جمالًا",
+    backToTopLabel: "العودة إلى بداية الدعوة",
   },
 };
