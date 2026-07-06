@@ -1,18 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
-
 @theme {
   --font-arabic: "Amiri", serif;
   --font-arabic-display: "Aref Ruqaa", serif;
   --font-english: "Cormorant Garamond", serif;
 
-  --color-background: #f4efe5;
-  --color-surface: #fbf8f2;
-  --color-ink: #273022;
-  --color-olive: #4d573d;
-  --color-gold: #b69758;
+  /* Main palette */
+  --color-background: #e9e0ce;
+  --color-surface: #fffdf8;
+
+  --color-primary: #65704e;
+  --color-secondary: #b48f52;
+
+  --color-text-dark: #273022;
+  --color-text-muted: #5d6655;
+
+  /* Optional direct names */
+  --color-olive: #65704e;
+  --color-gold: #b48f52;
   --color-muted-gold: #d6c39a;
+  --color-ink: #273022;
+  --color-ivory: #fffdf8;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -20,18 +33,17 @@ body {
   min-height: 100vh;
   font-family: var(--font-arabic);
   background: var(--color-background);
-  color: var(--color-ink);
+  color: var(--color-text-dark);
   line-height: 1.8;
 }
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
-
-
-

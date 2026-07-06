@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import { invitationData } from "../data/invitationData";
 import OrnamentDivider from "../components/ui/OrnamentDivider";
+import { invitationData } from "../data/invitationData";
+import { formatInvitationDateTime } from "../utils/formatInvitationDate";
 
 function getRemainingTime(targetDate) {
   const targetTime = new Date(targetDate).getTime();
@@ -28,44 +29,14 @@ function getRemainingTime(targetDate) {
   };
 }
 
-function formatEventDateTime(dateValue) {
-  const date = new Date(dateValue);
-
-  const formattedDate = new Intl.DateTimeFormat("ar-LB-u-nu-latn", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "Asia/Beirut",
-  }).format(date);
-
-  const timeParts = new Intl.DateTimeFormat("en-GB", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-    timeZone: "Asia/Beirut",
-  }).formatToParts(date);
-
-  const hour24 = Number(
-    timeParts.find((part) => part.type === "hour")?.value ?? 0,
-  );
-
-  const minutes =
-    timeParts.find((part) => part.type === "minute")?.value ?? "00";
-
-  const hour12 = hour24 % 12 || 12;
-  const period = hour24 >= 12 ? "مساءً" : "صباحًا";
-
-  return `${formattedDate} — الساعة ${hour12}:${minutes} ${period}`;
-}
-
 function TimeUnit({ value, label }) {
   return (
-    <div className="flex min-w-16 flex-col items-center gap-2 sm:min-w-20">
-      <span className="font-display text-3xl font-semibold text-primary sm:text-4xl">
+    <div className="flex min-w-0 flex-1 flex-col items-center text-center">
+      <span className="font-english text-[clamp(2rem,9vw,5.5rem)] font-semibold leading-none tabular-nums text-primary">
         {String(value).padStart(2, "0")}
       </span>
 
-      <span className="font-arabic text-xs text-text-dark/65 sm:text-sm">
+      <span className="mt-3 font-arabic text-sm font-bold text-text-dark/80 sm:mt-4 sm:text-base">
         {label}
       </span>
     </div>
@@ -73,7 +44,7 @@ function TimeUnit({ value, label }) {
 }
 
 function Countdown() {
-  const { event } = invitationData;
+  const { event, countdown } = invitationData;
 
   const [timeLeft, setTimeLeft] = useState(() =>
     getRemainingTime(event.startsAt),
@@ -87,87 +58,104 @@ function Countdown() {
     return () => window.clearInterval(timer);
   }, [event.startsAt]);
 
-  const eventDateTime = formatEventDateTime(event.startsAt);
+  const eventDateTime = formatInvitationDateTime(
+    event.startsAt,
+    event.timeZone,
+  );
 
   return (
-    <section className="relative overflow-hidden bg-surface px-5 py-24 sm:px-8 sm:py-32">
+    <section
+      id="countdown"
+      dir="rtl"
+      className="relative overflow-hidden bg-surface px-4 py-24 text-center sm:px-6 sm:py-32"
+    >
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(116,121,87,0.12),transparent_42%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(86,97,70,0.12),transparent_62%)]"
       />
 
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
+      <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-0 h-32 w-[120%] -translate-x-1/2 rounded-b-[50%] bg-primary/10 blur-3xl"
+      />
+
+      <div className="relative mx-auto max-w-4xl">
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.45 }}
-          transition={{ duration: 0.65 }}
-          className="font-arabic text-lg text-primary sm:text-xl"
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="font-english text-sm font-semibold uppercase tracking-[0.35em] text-primary"
         >
-          نترقب فرحتنا بشوق
+          {countdown.eyebrow}
         </motion.p>
 
         <motion.h2
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.45 }}
-          transition={{ duration: 0.7, delay: 0.08 }}
-          className="mt-4 font-display text-4xl font-semibold text-text-dark sm:text-5xl"
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ delay: 0.1, duration: 0.75, ease: "easeOut" }}
+          className="mt-4 font-arabic text-4xl font-bold text-text-dark sm:text-5xl"
         >
-          Countdown
+          {countdown.title}
         </motion.h2>
 
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0.7 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true, amount: 0.45 }}
-          transition={{ duration: 0.65, delay: 0.16 }}
-          className="mt-7"
-        >
-          <OrnamentDivider size="small" />
-        </motion.div>
-
         <motion.p
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.45 }}
-          transition={{ duration: 0.65, delay: 0.22 }}
-          className="mt-7 font-arabic text-base text-text-dark/75 sm:text-lg"
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+          className="mt-4 font-arabic text-lg font-semibold text-text-dark/85 sm:text-xl"
         >
           {eventDateTime}
         </motion.p>
 
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.28, duration: 0.65, ease: "easeOut" }}
+          className="mt-8 origin-center"
+        >
+          <OrnamentDivider size="small" />
+        </motion.div>
+
         {timeLeft.isFinished ? (
           <motion.p
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="mt-10 font-arabic text-2xl text-primary sm:text-3xl"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-12 font-arabic text-2xl font-bold text-primary"
           >
-            بدأت فرحتنا ✦
+            {countdown.finishedMessage}
           </motion.p>
         ) : (
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.7, delay: 0.28 }}
-            className="mt-10 flex flex-wrap justify-center gap-x-3 gap-y-8 sm:gap-x-7"
+            transition={{ delay: 0.35, duration: 0.8, ease: "easeOut" }}
+            className="mx-auto mt-12 max-w-3xl"
           >
-            <TimeUnit value={timeLeft.days} label="يوم" />
-            <TimeUnit value={timeLeft.hours} label="ساعة" />
-            <TimeUnit value={timeLeft.minutes} label="دقيقة" />
-            <TimeUnit value={timeLeft.seconds} label="ثانية" />
+            <div
+              dir="ltr"
+              className="grid grid-cols-4 divide-x divide-primary/35 rounded-2xl border border-primary/45 bg-background px-2 py-7 shadow-[0_14px_38px_rgba(38,48,31,0.1)] sm:px-5 sm:py-10"
+            >
+              <TimeUnit value={timeLeft.days} label="يوم" />
+              <TimeUnit value={timeLeft.hours} label="ساعة" />
+              <TimeUnit value={timeLeft.minutes} label="دقيقة" />
+              <TimeUnit value={timeLeft.seconds} label="ثانية" />
+            </div>
           </motion.div>
         )}
 
         <motion.p
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.45 }}
-          transition={{ duration: 0.65, delay: 0.34 }}
-          className="mt-12 max-w-md font-arabic text-base leading-8 text-text-dark/65 sm:text-lg"
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ delay: 0.45, duration: 0.7, ease: "easeOut" }}
+          className="mx-auto mt-10 max-w-xl font-arabic text-lg font-semibold leading-9 text-text-dark/80 sm:text-xl"
         >
-          حضوركم هو أجمل ما يكتمل به هذا اليوم.
+          {countdown.supportingText}
         </motion.p>
       </div>
     </section>
