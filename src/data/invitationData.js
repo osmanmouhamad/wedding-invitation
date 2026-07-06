@@ -36,7 +36,7 @@ hero: {
 
   countdown: {
     eyebrow: "Countdown",
-    title: "نترقب فرحتنا بشوق",
+    title: "نترقب فرحتنا بشوق ",
     finishedMessage: "بدأت فرحتنا ✦",
     supportingText: "حضوركم هو أجمل ما يكتمل به هذا اليوم.",
   },
