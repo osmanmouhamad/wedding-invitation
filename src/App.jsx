@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import IntroScreen from "./sections/IntroScreen";
 import Hero from "./sections/Hero";
@@ -9,6 +9,7 @@ import Footer from "./sections/Footer";
 function App() {
   const [isOpened, setIsOpened] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   function handleOpen() {
     if (isOpening) return;
@@ -20,16 +21,40 @@ function App() {
     }, 2700);
   }
 
+  function handleShowDetails() {
+    setShowDetails(true);
+  }
+
+  useEffect(() => {
+    if (!showDetails) return;
+
+    const frameId = window.requestAnimationFrame(() => {
+      document.getElementById("details")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [showDetails]);
+
   return (
     <>
       {!isOpened ? (
         <IntroScreen onOpen={handleOpen} isOpening={isOpening} />
       ) : (
         <main dir="rtl">
-          <Hero />
-          <WeddingDetails />
-          <Countdown />
-          <Footer />
+          <Hero onShowDetails={handleShowDetails} />
+
+          {showDetails && (
+            <>
+              <WeddingDetails />
+              <Countdown />
+              <Footer />
+            </>
+          )}
         </main>
       )}
     </>

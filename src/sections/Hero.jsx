@@ -5,13 +5,10 @@ import { formatInvitationDate } from "../utils/formatInvitationDate";
 import introBg from "../assets/intro-bg-optimized.webp";
 import OrnamentDivider from "../components/ui/OrnamentDivider";
 
-function Hero() {
+function Hero({ onShowDetails }) {
   const { couple, event, venue, hero } = invitationData;
 
-  const eventDate = formatInvitationDate(
-    event.startsAt,
-    event.timeZone,
-  );
+  const eventDate = formatInvitationDate(event.startsAt, event.timeZone);
 
   return (
     <section
@@ -86,9 +83,7 @@ function Hero() {
           transition={{ delay: 0.52, duration: 0.95, ease: "easeOut" }}
           className="mt-10 flex flex-col items-center font-arabic font-bold leading-[0.9] text-text-dark"
         >
-          <span className="text-[clamp(1rem,6vw,5.5rem)]">
-            {couple.groom}
-          </span>
+          <span className="text-[clamp(1rem,6vw,5.5rem)]">{couple.groom}</span>
 
           <span className="my-4 flex items-center gap-4">
             <span className="h-px w-10 bg-primary/55 sm:w-16" />
@@ -100,9 +95,7 @@ function Hero() {
             <span className="h-px w-10 bg-primary/55 sm:w-16" />
           </span>
 
-          <span className="text-[clamp(1rem,6vw,5.5rem)]">
-            {couple.bride}
-          </span>
+          <span className="text-[clamp(1rem,6vw,5.5rem)]">{couple.bride}</span>
         </motion.h1>
 
         <motion.div
@@ -129,8 +122,9 @@ function Hero() {
           </p>
         </motion.div>
 
-        <motion.a
-          href="#details"
+        <motion.button
+          type="button"
+          onClick={onShowDetails}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 7, 0] }}
           transition={{
@@ -142,14 +136,14 @@ function Hero() {
               ease: "easeInOut",
             },
           }}
-          className="mt-12 flex flex-col items-center gap-3 text-text-dark/65"
+          className="mt-12 flex flex-col items-center gap-3 border-0 bg-transparent p-0 text-text-dark/70 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-4"
         >
           <span className="font-arabic text-sm">{hero.scrollLabel}</span>
 
           <span className="flex size-10 items-center justify-center rounded-full border border-primary/55 text-primary">
             ↓
           </span>
-        </motion.a>
+        </motion.button>
       </div>
 
       <div className="absolute inset-x-0 bottom-0 z-20 border-t border-surface/25 bg-primary px-6 py-4">
