@@ -30,14 +30,17 @@ function getRemainingTime(targetDate) {
 
 function TimeUnit({ value, label }) {
   return (
-    <div className="flex min-w-0 flex-1 flex-col items-center text-center">
-      <span className="font-english text-[clamp(2rem,9vw,5.5rem)] font-semibold leading-none tabular-nums text-primary">
+    <div className="rounded-2xl border border-primary/20 bg-[#f4ecdc] px-1 py-4 text-center sm:px-4 sm:py-6">
+      <p className="font-english text-[clamp(2rem,8vw,4.3rem)] font-semibold leading-none tabular-nums text-primary">
         {String(value).padStart(2, "0")}
-      </span>
+      </p>
 
-      <span className="mt-3 font-arabic text-sm font-bold text-text-dark/80 sm:mt-4 sm:text-base">
+      <p
+        dir="rtl"
+        className="mt-3 font-arabic text-xs font-bold text-text-dark/75 sm:text-base"
+      >
         {label}
-      </span>
+      </p>
     </div>
   );
 }
@@ -57,90 +60,111 @@ function Countdown() {
     return () => window.clearInterval(timer);
   }, [event.startsAt]);
 
+  const timeUnits = [
+    { value: timeLeft.days, label: "يوم" },
+    { value: timeLeft.hours, label: "ساعة" },
+    { value: timeLeft.minutes, label: "دقيقة" },
+    { value: timeLeft.seconds, label: "ثانية" },
+  ];
+
   return (
     <section
       id="countdown"
       dir="rtl"
-      className="relative overflow-hidden bg-surface px-4 py-24 text-center sm:px-6 sm:py-32"
+      className="relative overflow-hidden bg-[#e5ddca] px-3 py-16 sm:px-6 sm:py-24"
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(86,97,70,0.12),transparent_62%)]"
-      />
-
-      <div
-        aria-hidden="true"
-        className="absolute left-1/2 top-0 h-32 w-[120%] -translate-x-1/2 rounded-b-[50%] bg-primary/10 blur-3xl"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,253,248,0.4),transparent_66%)]"
       />
 
       <div className="relative mx-auto max-w-4xl">
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="font-english text-sm font-semibold uppercase tracking-[0.35em] text-primary"
+        <motion.article
+          initial={{ opacity: 0, y: 24, scale: 0.99 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.22 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-[1.75rem] border border-primary/30 bg-[#fffdf8]/95 px-5 py-12 text-center shadow-[0_18px_55px_rgba(38,48,31,0.1)] sm:rounded-[2.25rem] sm:px-12 sm:py-16"
         >
-          {countdown.eyebrow}
-        </motion.p>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-2 rounded-[1.35rem] border border-secondary/20 sm:inset-3 sm:rounded-[1.8rem]"
+          />
 
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ delay: 0.1, duration: 0.75, ease: "easeOut" }}
-          className="mt-4 font-arabic text-4xl font-bold text-text-dark sm:text-5xl"
-        >
-          {countdown.title}
-        </motion.h2>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-[radial-gradient(ellipse_at_top,rgba(86,97,70,0.07),transparent_72%)]"
+          />
 
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.65, ease: "easeOut" }}
-          className="mt-8 origin-center"
-        >
-          <OrnamentDivider size="small" />
-        </motion.div>
-
-        {timeLeft.isFinished ? (
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-12 font-arabic text-2xl font-bold text-primary"
-          >
-            {countdown.finishedMessage}
-          </motion.p>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-            className="mx-auto mt-12 max-w-3xl"
-          >
-            <div
-              dir="ltr"
-              className="grid grid-cols-4 divide-x divide-primary/35 rounded-2xl border border-primary/45 bg-background px-2 py-7 shadow-[0_14px_38px_rgba(38,48,31,0.1)] sm:px-5 sm:py-10"
+          <div className="relative z-10">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.12, duration: 0.6 }}
+              className="font-english text-xs font-semibold uppercase tracking-[0.32em] text-primary sm:text-sm"
             >
-              <TimeUnit value={timeLeft.days} label="يوم" />
-              <TimeUnit value={timeLeft.hours} label="ساعة" />
-              <TimeUnit value={timeLeft.minutes} label="دقيقة" />
-              <TimeUnit value={timeLeft.seconds} label="ثانية" />
-            </div>
-          </motion.div>
-        )}
+              {countdown.eyebrow}
+            </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
-          className="mx-auto mt-10 max-w-xl font-arabic text-lg font-semibold leading-9 text-text-dark/80 sm:text-xl"
-        >
-          {countdown.supportingText}
-        </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="mt-4 font-arabic-display text-4xl text-text-dark sm:text-5xl"
+            >
+              {countdown.title}
+            </motion.h2>
+
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.28, duration: 0.65 }}
+              className="mt-7 origin-center"
+            >
+              <OrnamentDivider size="small" />
+            </motion.div>
+
+            {timeLeft.isFinished ? (
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-10 font-arabic text-2xl font-bold text-primary sm:text-3xl"
+              >
+                {countdown.finishedMessage}
+              </motion.p>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: 0.36, duration: 0.75 }}
+                dir="ltr"
+                className="mt-10 grid grid-cols-4 gap-2 sm:mt-12 sm:gap-3"
+              >
+                {timeUnits.map((unit) => (
+                  <TimeUnit
+                    key={unit.label}
+                    value={unit.value}
+                    label={unit.label}
+                  />
+                ))}
+              </motion.div>
+            )}
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.48, duration: 0.7 }}
+              className="mx-auto mt-10 max-w-xl font-arabic text-lg leading-9 text-text-dark/75 sm:text-xl"
+            >
+              {countdown.supportingText}
+            </motion.p>
+          </div>
+        </motion.article>
       </div>
     </section>
   );

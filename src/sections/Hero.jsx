@@ -10,11 +10,11 @@ function Hero({ onShowDetails }) {
     <section
       id="home"
       dir="rtl"
-      className="relative min-h-[100svh] overflow-hidden bg-[#e5ddca] px-3 py-3 sm:px-6 sm:py-6"
+      className="relative min-h-svh overflow-hidden bg-[#e5ddca] px-3 py-3 sm:px-6 sm:py-6"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,253,248,0.18),transparent_65%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,253,248,0.42),transparent_64%),linear-gradient(180deg,rgba(255,253,248,0.14),transparent_55%)]"
       />
 
       <div className="relative mx-auto flex min-h-[calc(100svh-1.5rem)] max-w-4xl items-center justify-center sm:min-h-[calc(100svh-3rem)]">
@@ -22,11 +22,16 @@ function Hero({ onShowDetails }) {
           initial={{ opacity: 0, y: 22, scale: 0.985 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.85, ease: "easeOut" }}
-          className="relative w-full overflow-hidden rounded-[1.75rem] border border-primary/30 bg-[#fffdf8] px-5 py-10 text-center shadow-[0_18px_55px_rgba(38,48,31,0.1)] sm:rounded-[2.25rem] sm:px-12 sm:py-14"
+          className="relative w-full overflow-hidden rounded-[1.75rem] border border-primary/30 bg-[#fffdf8]/95 px-5 py-10 text-center shadow-[0_18px_55px_rgba(38,48,31,0.1)] sm:rounded-[2.25rem] sm:px-12 sm:py-14"
         >
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-2 rounded-[1.35rem] border border-secondary/20 sm:inset-3 sm:rounded-[1.8rem]"
+          />
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(ellipse_at_top,rgba(86,97,70,0.07),transparent_72%)]"
           />
 
           <div className="relative z-10">

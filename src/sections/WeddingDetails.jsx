@@ -178,7 +178,7 @@ function WeddingDetails() {
           className="mx-auto mt-10 h-px w-32 origin-center bg-primary/60"
         />
 
-        <div className="mt-12 grid overflow-hidden rounded-[2rem] border border-primary/40 bg-surface shadow-[0_22px_60px_rgba(38,48,31,0.14)] md:grid-cols-3">
+        <div className="mt-12 grid overflow-hidden rounded-4xl border border-primary/40 bg-surface shadow-[0_22px_60px_rgba(38,48,31,0.14)] md:grid-cols-3">
           <DetailCard
             icon={<CalendarIcon />}
             label={details.dateLabel}
