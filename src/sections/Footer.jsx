@@ -1,28 +1,32 @@
 import { motion } from "framer-motion";
+
 import { invitationData } from "../data/invitationData";
+import { formatInvitationDate } from "../utils/formatInvitationDate";
 import OrnamentDivider from "../components/ui/OrnamentDivider";
 
 function Footer() {
   const { couple, event, footer } = invitationData;
+
+  const eventDate = formatInvitationDate(
+    event.startsAt,
+    event.timeZone,
+  );
 
   return (
     <footer
       dir="rtl"
       className="relative overflow-hidden bg-primary px-4 py-20 text-center sm:px-6 sm:py-24"
     >
-      {/* Soft light texture */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),transparent_58%)]"
       />
 
-      {/* Upper curved decoration */}
       <div
         aria-hidden="true"
         className="absolute left-1/2 top-0 h-24 w-[125%] -translate-x-1/2 rounded-b-[50%] border-b border-surface/20 bg-surface/5"
       />
 
-      {/* Fine border */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-3 rounded-[1.6rem] border border-surface/20 sm:inset-5 sm:rounded-[2rem]"
@@ -36,7 +40,7 @@ function Footer() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="font-arabic text-xl text-surface/90 sm:text-2xl"
         >
-          شرفتمونا بحضوركم
+          {footer.welcomeMessage}
         </motion.p>
 
         <motion.div
@@ -57,9 +61,11 @@ function Footer() {
           className="mt-8 font-arabic text-4xl font-bold leading-relaxed text-surface sm:text-5xl"
         >
           {couple.groom}
+
           <span className="mx-3 font-english text-3xl font-normal text-secondary sm:text-4xl">
             &
           </span>
+
           {couple.bride}
         </motion.h2>
 
@@ -78,10 +84,9 @@ function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.52, duration: 0.65 }}
-          dir="ltr"
           className="mt-8 font-english text-lg tracking-[0.16em] text-surface/70 sm:text-xl"
         >
-          {event.date}
+          {eventDate}
         </motion.p>
 
         <motion.a
@@ -99,7 +104,7 @@ function Footer() {
             },
           }}
           className="mt-10 inline-flex size-10 items-center justify-center rounded-full border border-surface/40 text-lg text-surface transition hover:bg-surface/10"
-          aria-label="العودة إلى بداية الدعوة"
+          aria-label={footer.backToTopLabel}
         >
           ↑
         </motion.a>

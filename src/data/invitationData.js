@@ -3,9 +3,12 @@ export const invitationData = {
     groom: "سهيل الدندشي",
     bride: "بشرى الكنج",
   },
-event: {
-  startsAt: "2026-07-17T19:00:00+03:00",
-},
+
+  event: {
+    title: "حفل زفاف سهيل وبشرى",
+    startsAt: "2026-07-17T19:00:00+03:00",
+    timeZone: "Asia/Beirut",
+  },
 
   venue: {
     name: "Glamour Garden",
@@ -15,8 +18,7 @@ event: {
 
   hero: {
     basmala: "بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ",
-    invitationText:
-      "بكل الحب والفرح، يسعدنا دعوتكم لمشاركتنا أجمل لحظات العمر.",
+    invitationText: "بكل الحب والفرح، يسعدنا دعوتكم لمشاركتنا أجمل لحظات العمر.",
   },
 
   details: {
@@ -24,6 +26,12 @@ event: {
     dateLabel: "التاريخ",
     timeLabel: "الساعة",
     venueLabel: "المكان",
+  },
+
+  countdown: {
+    title: "نترقب فرحتنا بشوق",
+    finishedMessage: "بدأت فرحتنا ✦",
+    supportingText: "حضوركم هو أجمل ما يكتمل به هذا اليوم.",
   },
 
   footer: {

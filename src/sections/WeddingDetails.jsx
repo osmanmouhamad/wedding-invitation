@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
+
 import { invitationData } from "../data/invitationData";
+import {
+  formatInvitationDate,
+  formatInvitationTime,
+} from "../utils/formatInvitationDate";
 
 function CalendarIcon() {
   return (
@@ -71,7 +76,17 @@ function DetailCard({ icon, label, children, delay }) {
 }
 
 function WeddingDetails() {
-  const { event, venue } = invitationData;
+  const { event, venue, details } = invitationData;
+
+  const eventDate = formatInvitationDate(
+    event.startsAt,
+    event.timeZone,
+  );
+
+  const eventTime = formatInvitationTime(
+    event.startsAt,
+    event.timeZone,
+  );
 
   return (
     <section
@@ -79,7 +94,6 @@ function WeddingDetails() {
       dir="rtl"
       className="relative overflow-hidden bg-surface px-4 py-24 sm:px-6 sm:py-32"
     >
-      {/* Soft olive decoration */}
       <div
         aria-hidden="true"
         className="absolute left-1/2 top-0 h-48 w-[130%] -translate-x-1/2 rounded-b-[50%] bg-primary/8 blur-3xl"
@@ -94,15 +108,15 @@ function WeddingDetails() {
           className="text-center"
         >
           <p className="font-english text-sm uppercase tracking-[0.35em] text-primary">
-            Wedding Details
+            {details.eyebrow}
           </p>
 
           <h2 className="mt-4 font-arabic text-4xl text-text-dark sm:text-5xl">
-            تفاصيل فرحتنا
+            {details.title}
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl font-arabic text-lg leading-9 text-text-dark/65">
-            يشرفنا حضوركم ومشاركتنا هذه اللحظة التي ستبقى ذكرى جميلة في قلوبنا.
+            {details.description}
           </p>
         </motion.div>
 
@@ -115,23 +129,34 @@ function WeddingDetails() {
         />
 
         <div className="mt-12 grid overflow-hidden rounded-[2rem] border border-primary/25 bg-background/50 shadow-[0_22px_60px_rgba(77,81,61,0.12)] md:grid-cols-3">
-          <DetailCard icon={<CalendarIcon />} label="التاريخ" delay={0.1}>
-            <p
-              dir="ltr"
-              className="font-english text-2xl tracking-[0.1em] text-primary"
-            >
-              {event.date}
+          <DetailCard
+            icon={<CalendarIcon />}
+            label={details.dateLabel}
+            delay={0.1}
+          >
+            <p className="font-english text-2xl tracking-[0.1em] text-primary">
+              {eventDate}
             </p>
           </DetailCard>
 
           <div className="border-y border-primary/20 md:border-x md:border-y-0">
-            <DetailCard icon={<ClockIcon />} label="الوقت" delay={0.2}>
-              <p className="font-arabic text-2xl text-text-dark">{event.time}</p>
+            <DetailCard
+              icon={<ClockIcon />}
+              label={details.timeLabel}
+              delay={0.2}
+            >
+              <p className="font-arabic text-2xl text-text-dark">
+                {eventTime}
+              </p>
             </DetailCard>
           </div>
 
-          <DetailCard icon={<PinIcon />} label="المكان" delay={0.3}>
-            <p dir="ltr" className="font-english text-xl tracking-wide text-primary">
+          <DetailCard
+            icon={<PinIcon />}
+            label={details.venueLabel}
+            delay={0.3}
+          >
+            <p className="font-english text-xl tracking-wide text-primary">
               {venue.name}
             </p>
 
@@ -148,7 +173,7 @@ function WeddingDetails() {
           transition={{ delay: 0.35, duration: 0.7, ease: "easeOut" }}
           className="mt-12 text-center font-arabic text-xl text-text-dark/80"
         >
-          وجودكم يضيف إلى فرحتنا معنى أجمل.
+          {details.closingText}
         </motion.p>
       </div>
     </section>
