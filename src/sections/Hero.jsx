@@ -1,155 +1,107 @@
 import { motion } from "framer-motion";
 
-import { invitationData } from "../data/invitationData";
-import { formatInvitationDate } from "../utils/formatInvitationDate";
-import introBg from "../assets/intro-bg-optimized.webp";
 import OrnamentDivider from "../components/ui/OrnamentDivider";
+import { invitationData } from "../data/invitationData";
 
 function Hero({ onShowDetails }) {
-  const { couple, event, venue, hero } = invitationData;
-
-  const eventDate = formatInvitationDate(event.startsAt, event.timeZone);
+  const { couple, hero } = invitationData;
 
   return (
     <section
       id="home"
       dir="rtl"
-      className="relative min-h-[100svh] overflow-hidden bg-background px-4 text-center sm:px-6"
+      className="relative min-h-[100svh] overflow-hidden bg-[#e5ddca] px-3 py-3 sm:px-6 sm:py-6"
     >
-      <img
-        src={introBg}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.08] saturate-[0.35] mix-blend-multiply"
-      />
-
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(251,247,239,0.95),rgba(238,231,217,0.9)_58%,rgba(201,190,160,0.28)_100%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,253,248,0.18),transparent_65%)]"
       />
 
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-52 bg-[radial-gradient(ellipse_at_center_top,rgba(116,121,87,0.88),rgba(116,121,87,0.5)_46%,transparent_74%)]"
-      />
-
-      <div
-        aria-hidden="true"
-        className="absolute left-1/2 top-0 h-32 w-[135%] -translate-x-1/2 rounded-b-[50%] border-b border-surface/30 bg-primary/20 sm:h-40"
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-3 rounded-[1.7rem] border border-primary/25 sm:inset-5 sm:rounded-[2.2rem]"
-      />
-
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-4xl flex-col items-center justify-center px-2 pb-24 pt-24 sm:pb-28 sm:pt-28">
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          className="font-arabic text-xl text-text-dark sm:text-3xl"
-        >
-          {hero.basmala}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ delay: 0.18, duration: 0.65, ease: "easeOut" }}
-          className="mt-6"
-        >
-          <OrnamentDivider />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.32, duration: 0.7, ease: "easeOut" }}
-          className="mt-8"
-        >
-          <p className="font-arabic text-lg text-text-dark/75 sm:text-xl">
-            {hero.eyebrow}
-          </p>
-
-          <p className="mt-2 font-arabic text-base text-text-dark/60 sm:text-lg">
-            {hero.invitationText}
-          </p>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 22, scale: 0.97 }}
+      <div className="relative mx-auto flex min-h-[calc(100svh-1.5rem)] max-w-4xl items-center justify-center sm:min-h-[calc(100svh-3rem)]">
+        <motion.article
+          initial={{ opacity: 0, y: 22, scale: 0.985 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.52, duration: 0.95, ease: "easeOut" }}
-          className="mt-10 flex flex-col items-center font-arabic font-bold leading-[0.9] text-text-dark"
+          transition={{ duration: 0.85, ease: "easeOut" }}
+          className="relative w-full overflow-hidden rounded-[1.75rem] border border-primary/30 bg-[#fffdf8] px-5 py-10 text-center shadow-[0_18px_55px_rgba(38,48,31,0.1)] sm:rounded-[2.25rem] sm:px-12 sm:py-14"
         >
-          <span className="text-[clamp(1rem,6vw,5.5rem)]">{couple.groom}</span>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-2 rounded-[1.35rem] border border-secondary/20 sm:inset-3 sm:rounded-[1.8rem]"
+          />
 
-          <span className="my-4 flex items-center gap-4">
-            <span className="h-px w-10 bg-primary/55 sm:w-16" />
+          <div className="relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.12, duration: 0.65 }}
+            >
+              <p className="font-arabic-display text-xl text-text-dark sm:text-3xl">
+                {hero.basmala}
+              </p>
 
-            <span className="font-english text-4xl font-normal text-primary sm:text-5xl">
-              و
-            </span>
+              <blockquote className="mx-auto mt-5 max-w-xl font-arabic text-[0.83rem] leading-7 text-text-dark/75 sm:mt-6 sm:max-w-2xl sm:text-base sm:leading-9">
+                {hero.verse}
+              </blockquote>
 
-            <span className="h-px w-10 bg-primary/55 sm:w-16" />
-          </span>
+              <p className="mt-3 font-arabic text-sm font-bold text-primary/85">
+                {hero.verseReference}
+              </p>
+            </motion.div>
 
-          <span className="text-[clamp(1rem,6vw,5.5rem)]">{couple.bride}</span>
-        </motion.h1>
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ delay: 0.28, duration: 0.65, ease: "easeOut" }}
+              className="mt-8 origin-center"
+            >
+              <OrnamentDivider />
+            </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ delay: 0.92, duration: 0.65, ease: "easeOut" }}
-          className="mt-10"
-        >
-          <OrnamentDivider />
-        </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.42, duration: 0.85, ease: "easeOut" }}
+              className="mt-9 flex flex-col items-center font-arabic-display leading-[1.05] text-text-dark sm:mt-11"
+            >
+              <span className="text-[clamp(2.5rem,11vw,5.8rem)]">
+                {couple.groom}
+              </span>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.08, duration: 0.7, ease: "easeOut" }}
-          className="mt-8"
-        >
-          <p className="font-arabic text-sm text-text-dark/55 sm:text-base">
-            {hero.dateLabel}
-          </p>
+              <span className="my-4 flex items-center gap-4 sm:my-5">
+                <span className="h-px w-12 bg-secondary/60 sm:w-20" />
 
-          <p className="mt-2 font-english text-2xl tracking-[0.14em] text-primary sm:text-3xl">
-            {eventDate}
-          </p>
-        </motion.div>
+                <span className="font-arabic text-3xl text-primary sm:text-4xl">
+                  و
+                </span>
 
-        <motion.button
-          type="button"
-          onClick={onShowDetails}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 7, 0] }}
-          transition={{
-            opacity: { delay: 1.28, duration: 0.5 },
-            y: {
-              delay: 1.45,
-              duration: 2.3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
-          className="mt-12 flex flex-col items-center gap-3 border-0 bg-transparent p-0 text-text-dark/70 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-4"
-        >
-          <span className="font-arabic text-sm">{hero.scrollLabel}</span>
+                <span className="h-px w-12 bg-secondary/60 sm:w-20" />
+              </span>
 
-          <span className="flex size-10 items-center justify-center rounded-full border border-primary/55 text-primary">
-            ↓
-          </span>
-        </motion.button>
-      </div>
+              <span className="text-[clamp(2.5rem,11vw,5.8rem)]">
+                {couple.bride}
+              </span>
+            </motion.h1>
 
-      <div className="absolute inset-x-0 bottom-0 z-20 border-t border-surface/25 bg-primary px-6 py-4">
-        <p className="font-arabic text-base text-surface sm:text-lg">
-          {venue.name} — {venue.address}
-        </p>
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.68, duration: 0.7, ease: "easeOut" }}
+              className="mt-10 sm:mt-12"
+            >
+              <button
+                type="button"
+                onClick={onShowDetails}
+                className="group inline-flex items-center gap-3 rounded-full border border-primary/45 bg-[#eee5d4] px-6 py-3 font-arabic text-sm font-bold text-primary shadow-[0_10px_24px_rgba(38,48,31,0.08)] transition duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 sm:px-8 sm:text-base"
+              >
+                <span>{hero.scrollLabel}</span>
+
+                <span className="transition-transform duration-300 group-hover:translate-y-1">
+                  ↓
+                </span>
+              </button>
+            </motion.div>
+          </div>
+        </motion.article>
       </div>
     </section>
   );

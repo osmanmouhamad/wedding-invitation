@@ -10,20 +10,19 @@ export const invitationData = {
     timeZone: "Asia/Beirut",
   },
 
-  venue: {
-    name: "Glamour Garden",
-    address: "حلبا - عكار",
-    mapUrl: "https://maps.app.goo.gl/uN1VzyHbz9bttRih9?g_st=iw",
-  },
+venue: {
+  name: "Nadimnar Garden",
+  address: "المنية",
+  mapUrl: "https://maps.app.goo.gl/c54HrpXgBKmrKcwV8?g_st=ic",
+},
 
-  hero: {
-    basmala: "بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ",
-    eyebrow: "بكل الحب والفرح",
-    invitationText: "يسرّنا دعوتكم لحضور حفل زفاف",
-    dateLabel: "يوم فرحنا",
-    scrollLabel: "اكتشف تفاصيل دعوتنا",
-  },
-
+hero: {
+  basmala: "بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ",
+  verse:
+    "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ",
+  verseReference: "الروم — ٢١",
+  scrollLabel: "اكتشفوا تفاصيل الاحتفال",
+},
   details: {
     eyebrow: "Wedding Details",
     title: "تفاصيل فرحتنا",
@@ -49,9 +48,9 @@ export const invitationData = {
     shareText: "يسرّنا دعوتكم لمشاركتنا فرحة زفافنا.",
   },
 
-  footer: {
-    welcomeMessage: "شرفتمونا بحضوركم",
-    message: "وجودكم يملأ فرحتنا جمالًا",
-    backToTopLabel: "العودة إلى بداية الدعوة",
-  },
+ footer: {
+  welcomeMessage: "بفرحٍ كبير ننتظر لقاءكم،",
+  message:
+    "فحضوركم يضيف إلى فرحتنا معنىً لا يكتمل بدونه.\nنلتقي لنصنع ذكرى جميلة معًا.",
+},
 };

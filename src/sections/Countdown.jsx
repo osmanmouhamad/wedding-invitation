@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 import OrnamentDivider from "../components/ui/OrnamentDivider";
 import { invitationData } from "../data/invitationData";
-import { formatInvitationDateTime } from "../utils/formatInvitationDate";
 
 function getRemainingTime(targetDate) {
   const targetTime = new Date(targetDate).getTime();
@@ -58,11 +57,6 @@ function Countdown() {
     return () => window.clearInterval(timer);
   }, [event.startsAt]);
 
-  const eventDateTime = formatInvitationDateTime(
-    event.startsAt,
-    event.timeZone,
-  );
-
   return (
     <section
       id="countdown"
@@ -100,21 +94,11 @@ function Countdown() {
           {countdown.title}
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
-          className="mt-4 font-arabic text-lg font-semibold text-text-dark/85 sm:text-xl"
-        >
-          {eventDateTime}
-        </motion.p>
-
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.28, duration: 0.65, ease: "easeOut" }}
+          transition={{ delay: 0.2, duration: 0.65, ease: "easeOut" }}
           className="mt-8 origin-center"
         >
           <OrnamentDivider size="small" />
@@ -133,7 +117,7 @@ function Countdown() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
-            transition={{ delay: 0.35, duration: 0.8, ease: "easeOut" }}
+            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
             className="mx-auto mt-12 max-w-3xl"
           >
             <div
@@ -152,7 +136,7 @@ function Countdown() {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
-          transition={{ delay: 0.45, duration: 0.7, ease: "easeOut" }}
+          transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
           className="mx-auto mt-10 max-w-xl font-arabic text-lg font-semibold leading-9 text-text-dark/80 sm:text-xl"
         >
           {countdown.supportingText}
