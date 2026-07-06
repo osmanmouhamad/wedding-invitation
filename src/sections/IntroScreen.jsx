@@ -6,7 +6,7 @@ import InvitationText from "../components/intro/InvitationText";
 import InvitationTitle from "../components/intro/InvitationTitle";
 import Sparkle from "../components/intro/Sparkle";
 import SealAura from "../components/intro/SealAura";
-import GoldenDust from "../components/intro/GoldenDust";
+//import GoldenDust from "../components/intro/GoldenDust";
 
 function IntroScreen({ onOpen, isOpening }) {
   return (
@@ -25,7 +25,7 @@ function IntroScreen({ onOpen, isOpening }) {
       className="relative min-h-svh overflow-hidden px-4 sm:px-6"
     >
       <Background isOpening={isOpening} />
-      <GoldenDust isOpening={isOpening} />
+      {/* <GoldenDust isOpening={isOpening} /> */}
       <Birds isOpening={isOpening} />
       <Sparkle isOpening={isOpening} />
       <div className="relative z-10 flex min-h-svh flex-col items-center justify-center text-center">
