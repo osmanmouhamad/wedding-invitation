@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
 import OrnamentDivider from "../components/ui/OrnamentDivider";
 import { invitationData } from "../data/invitationData";
 
@@ -37,7 +36,7 @@ function TimeUnit({ value, label }) {
 
       <p
         dir="rtl"
-        className="mt-3 font-arabic text-xs font-bold text-text-dark/75 sm:text-base"
+        className="mt-3 font-arabic text-xs font-bold text-primary sm:text-base"
       >
         {label}
       </p>
@@ -112,7 +111,7 @@ function Countdown() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="mt-4 font-arabic-display text-4xl text-text-dark sm:text-5xl"
+              className="mt-4 font-arabic-display text-4xl text-primary sm:text-5xl"
             >
               {countdown.title}
             </motion.h2>
@@ -159,7 +158,7 @@ function Countdown() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.48, duration: 0.7 }}
-              className="mx-auto mt-10 max-w-xl font-arabic text-lg leading-9 text-text-dark/75 sm:text-xl"
+              className="mx-auto mt-10 max-w-xl font-arabic text-lg leading-9 text-primary sm:text-xl"
             >
               {countdown.supportingText}
             </motion.p>

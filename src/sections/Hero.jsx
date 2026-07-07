@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-
 import OrnamentDivider from "../components/ui/OrnamentDivider";
 import { invitationData } from "../data/invitationData";
 
@@ -40,15 +39,15 @@ function Hero({ onShowDetails }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.12, duration: 0.65 }}
             >
-              <p className="font-arabic-display text-xl text-text-dark sm:text-3xl">
+              <p className="font-arabic-display text-xl text-primary sm:text-3xl">
                 {hero.basmala}
               </p>
 
-              <blockquote className="mx-auto mt-5 max-w-xl font-arabic text-[0.83rem] leading-7 text-text-dark/75 sm:mt-6 sm:max-w-2xl sm:text-base sm:leading-9">
+              <blockquote className="mx-auto mt-5 max-w-xl font-arabic text-[0.83rem] leading-7 text-primary sm:mt-6 sm:max-w-2xl sm:text-base sm:leading-9">
                 {hero.verse}
               </blockquote>
 
-              <p className="mt-3 font-arabic text-sm font-bold text-primary/85">
+              <p className="mt-3 font-arabic text-sm font-bold text-primary">
                 {hero.verseReference}
               </p>
             </motion.div>
@@ -66,7 +65,7 @@ function Hero({ onShowDetails }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.42, duration: 0.85, ease: "easeOut" }}
-              className="mt-9 flex flex-col items-center font-arabic-display leading-[1.05] text-text-dark sm:mt-11"
+              className="mt-9 flex flex-col items-center font-arabic-display leading-[1.05] text-primary sm:mt-11"
             >
               <span className="text-[clamp(2.5rem,11vw,5.8rem)]">
                 {couple.groom}
@@ -74,11 +73,9 @@ function Hero({ onShowDetails }) {
 
               <span className="my-4 flex items-center gap-4 sm:my-5">
                 <span className="h-px w-12 bg-secondary/60 sm:w-20" />
-
                 <span className="font-arabic text-3xl text-primary sm:text-4xl">
                   و
                 </span>
-
                 <span className="h-px w-12 bg-secondary/60 sm:w-20" />
               </span>
 
@@ -99,7 +96,6 @@ function Hero({ onShowDetails }) {
                 className="group inline-flex items-center gap-3 rounded-full border border-primary/45 bg-[#eee5d4] px-6 py-3 font-arabic text-sm font-bold text-primary shadow-[0_10px_24px_rgba(38,48,31,0.08)] transition duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 sm:px-8 sm:text-base"
               >
                 <span>{hero.scrollLabel}</span>
-
                 <span className="transition-transform duration-300 group-hover:translate-y-1">
                   ↓
                 </span>

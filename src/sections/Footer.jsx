@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-
 import { invitationData } from "../data/invitationData";
 
 function LeafMark() {
@@ -68,7 +67,7 @@ function Footer() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.14, duration: 0.7 }}
-              className="mt-9 font-arabic-display text-3xl leading-relaxed text-text-dark sm:text-4xl"
+              className="mt-9 font-arabic-display text-3xl leading-relaxed text-primary sm:text-4xl"
             >
               {footer.welcomeMessage}
             </motion.p>
@@ -80,7 +79,7 @@ function Footer() {
               transition={{ delay: 0.28, duration: 0.75 }}
               className="mx-auto mt-8 max-w-xl border-y border-primary/15 px-3 py-8"
             >
-              <p className="font-arabic text-xl leading-[2.1] text-text-dark/80 sm:text-2xl">
+              <p className="font-arabic text-xl leading-[2.1] text-primary sm:text-2xl">
                 {footer.message}
               </p>
 

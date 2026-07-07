@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-
 import ShareInvitationButton from "../components/ui/ShareInvitationButton";
 import { invitationData } from "../data/invitationData";
 import {
@@ -69,11 +68,11 @@ function DetailCard({ icon, label, children, delay }) {
         {icon}
       </span>
 
-      <p className="mt-5 font-arabic text-lg font-bold text-text-dark/85">
+      <p className="mt-5 font-arabic text-lg font-bold text-primary">
         {label}
       </p>
 
-      <div className="mt-3 text-text-dark">{children}</div>
+      <div className="mt-3 text-primary">{children}</div>
     </motion.article>
   );
 }
@@ -97,7 +96,7 @@ function LocationCard({ venue, label, delay }) {
         <PinIcon />
       </span>
 
-      <p className="mt-5 font-arabic text-lg font-bold text-text-dark/85">
+      <p className="mt-5 font-arabic text-lg font-bold text-primary">
         {label}
       </p>
 
@@ -108,7 +107,7 @@ function LocationCard({ venue, label, delay }) {
         {venue.name}
       </p>
 
-      <p className="mt-2 font-arabic text-lg font-semibold text-text-dark/80">
+      <p className="mt-2 font-arabic text-lg font-semibold text-primary">
         {venue.address}
       </p>
 
@@ -161,11 +160,11 @@ function WeddingDetails() {
             {details.eyebrow}
           </p>
 
-          <h2 className="mt-4 font-arabic text-4xl font-bold text-text-dark sm:text-5xl">
+          <h2 className="mt-4 font-arabic text-4xl font-bold text-primary sm:text-5xl">
             {details.title}
           </h2>
 
-          <p className="mx-auto mt-5 max-w-xl font-arabic text-lg leading-9 text-text-dark/85">
+          <p className="mx-auto mt-5 max-w-xl font-arabic text-lg leading-9 text-primary">
             {details.description}
           </p>
         </motion.div>
@@ -195,7 +194,7 @@ function WeddingDetails() {
               label={details.timeLabel}
               delay={0.2}
             >
-              <p className="font-arabic text-2xl font-bold text-text-dark">
+              <p className="font-arabic text-2xl font-bold text-primary">
                 {eventTime}
               </p>
             </DetailCard>
@@ -213,7 +212,7 @@ function WeddingDetails() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ delay: 0.35, duration: 0.7, ease: "easeOut" }}
-          className="mt-12 text-center font-arabic text-xl font-semibold text-text-dark/85"
+          className="mt-12 text-center font-arabic text-xl font-semibold text-primary"
         >
           {details.closingText}
         </motion.p>
