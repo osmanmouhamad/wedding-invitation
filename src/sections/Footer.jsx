@@ -97,7 +97,21 @@ function Footer() {
 >
   جَنَّةُ الأَطْفَالِ مَنَازِلُهُمْ، نَوْمًا هَنِيئًا لَهُمْ.
 </motion.p>
+<motion.div
+  initial={{ opacity: 0, y: 12 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.42, duration: 0.7 }}
+  className="mt-8 flex flex-col items-center"
+>
+  <p className="font-arabic text-base font-semibold text-primary sm:text-lg">
+    الدَّعْوَةُ لِشَخْصَيْنِ فَقَطْ
+  </p>
 
+  <span className="mt-3 flex size-11 items-center justify-center rounded-full border border-primary/40 bg-[#f4ecdc] font-arabic text-2xl font-bold text-primary">
+    ٢
+  </span>
+</motion.div>
 <motion.div
   initial={{ opacity: 0, scaleX: 0 }}
   whileInView={{ opacity: 1, scaleX: 1 }}
