@@ -88,17 +88,27 @@ function Footer() {
               </p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.45, duration: 0.65 }}
-              className="mx-auto mt-10 flex items-center justify-center gap-3"
-            >
-              <span className="size-1.5 rotate-45 border border-secondary/80" />
-              <span className="h-px w-16 bg-secondary/55 sm:w-24" />
-              <span className="size-1.5 rotate-45 border border-secondary/80" />
-            </motion.div>
+          <motion.p
+  initial={{ opacity: 0, y: 12 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.42, duration: 0.7 }}
+  className="mt-8 font-arabic text-lg font-semibold text-primary sm:text-xl"
+>
+  جَنَّةُ الأَطْفَالِ مَنَازِلُهُمْ، نَوْمًا هَنِيئًا لَهُمْ.
+</motion.p>
+
+<motion.div
+  initial={{ opacity: 0, scaleX: 0 }}
+  whileInView={{ opacity: 1, scaleX: 1 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.52, duration: 0.65 }}
+  className="mx-auto mt-6 flex items-center justify-center gap-3"
+>
+  <span className="size-1.5 rotate-45 border border-secondary/80" />
+  <span className="h-px w-16 bg-secondary/55 sm:w-24" />
+  <span className="size-1.5 rotate-45 border border-secondary/80" />
+</motion.div>
           </div>
         </motion.article>
       </div>
