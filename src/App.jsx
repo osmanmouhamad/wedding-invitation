@@ -5,7 +5,7 @@ import Hero from "./sections/Hero";
 import WeddingDetails from "./sections/WeddingDetails";
 import Countdown from "./sections/Countdown";
 import Footer from "./sections/Footer";
-
+import ContactSection from "./sections/ContactSection";
 function App() {
   const [isOpened, setIsOpened] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
@@ -52,7 +52,9 @@ function App() {
             <>
               <WeddingDetails />
               <Countdown />
+              <ContactSection />
               <Footer />
+              
             </>
           )}
         </main>
