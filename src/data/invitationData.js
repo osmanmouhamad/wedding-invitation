@@ -6,7 +6,7 @@ export const invitationData = {
 
   event: {
     title: "حفل زفاف سهيل وبشرى",
-    startsAt: "2026-07-17T19:00:00+03:00",
+    startsAt: "2026-07-17T19:30:00+03:00",
     timeZone: "Asia/Beirut",
   },
 
